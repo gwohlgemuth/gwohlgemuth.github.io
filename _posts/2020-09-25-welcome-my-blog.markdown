@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Welcome to my blog!"
 date:   2020-09-25 15:28:34 +0200
 categories: jekyll update
@@ -9,7 +10,8 @@ I am particularly enthusiastic about the univalent foundations of mathematics
 and functional programming.
 
 ## Here are some of my favorite sites:
-Mathematics / Software: [Haskell], [Purescript], [Unison], [Category Theory for Programmers], [Bartoz Milewski], [Hott], [Hott/Agda]
+Mathematics / Software: [Haskell], [Purescript], [Unison], [hybrids], [Bartoz Milewski], [Bartoz Milewski: Category Theory for Programmers], [Hott], [Hott/Agda], [KaTeX], [Data-Driven Documents]
+
 
 
 [Purescript]: https://www.purescript.org/
@@ -18,5 +20,8 @@ Mathematics / Software: [Haskell], [Purescript], [Unison], [Category Theory for 
 [Hott]: https://homotopytypetheory.org/
 [Hott/Agda]: https://www.cs.bham.ac.uk/~mhe/HoTT-UF-in-Agda-Lecture-Notes/HoTT-UF-Agda.html
 [Bartoz Milewski]: https://bartoszmilewski.com/
-[Category Theory for Programmers]: https://github.com/hmemcpy/milewski-ctfp-pdf/
+[Bartoz Milewski: Category Theory for Programmers]: https://bartoszmilewski.com/2014/10/28/
 [The nLab]: https://ncatlab.org/
+[hybrids]: https://hybrids.js.org/#/
+[KaTeX]: https://katex.org/
+[Data-Driven Documents]: https://d3js.org/
