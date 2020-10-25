@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Welcome to my blog!"
 date:   2020-09-25 15:28:34 +0200
 categories: jekyll update

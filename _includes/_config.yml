@@ -18,6 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
+
 #title: Univalent Foundations of Mathematics, Functional Programming, Physics
 title: Gerhard Wohlgemuth
 #email: your-email@example.com
@@ -57,3 +58,31 @@ titles_from_headings:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+emptyArray: []
+
+comments:
+  receiver: https://api.github.com/repos/gwohlgemuth/comments/issues/1/comments
+
+defaults:
+  -
+    scope:
+      path: ''
+      type: pages
+    values:
+      layout: page
+      author: gwohlgemuth
+      commenting: open
+  -
+    scope:
+      path: '_posts'
+      type: posts
+    values:
+      layout: post
+      author: gwohlgemuth
+      commenting: open
+
+authors:
+  gwohl:
+    name: Gerhard Wohlgemuth
+    email: gwohl.dev@gmail.com
+    url: https://gwohlgemuth.github.io/

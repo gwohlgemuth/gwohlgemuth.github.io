@@ -1,0 +1,33 @@
+<hyb1-comp></hyb1-comp>
+</script>
+
+<script type="module">
+  import { define , html } from "https://unpkg.com/hybrids@4.3.1/src/index.js"
+  let commentsPromise = fetch ( "https://api.github.com/repos/gwohlgemuth/comments/issues/comments" )
+  const Hyb1Comp = {
+    render: ( comments ) => html`
+    <style>
+      .main {
+        display: flex;
+        justify-content: center;
+      }
+      .btn {
+        height: 40px
+      }
+    </style>
+    <div class="main">
+      <a href="https://github.com/gwohlgemuth/comments/issues/1">Post a comment on Github</a>
+      <div id="comments">
+        ${html.resolve ( commentsPromise.then( ( response ) => {
+            return response.json().then ( data => {
+              return html`<div>${ data[0].body }</div>`
+            })
+          }) )
+
+      }
+      </div>
+    </div>`
+  }
+
+  define ( 'hyb1-comp' , Hyb1Comp )
+</script>
