@@ -23,7 +23,7 @@
 title: Gerhard Wohlgemuth
 #email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Functional Programming, Mathematics and more ...
+  Functional Programming, Mathematics and more
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
@@ -58,31 +58,3 @@ titles_from_headings:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-emptyArray: []
-
-comments:
-  receiver: https://api.github.com/repos/gwohlgemuth/comments/issues/1/comments
-
-defaults:
-  -
-    scope:
-      path: ''
-      type: pages
-    values:
-      layout: page
-      author: gwohlgemuth
-      commenting: open
-  -
-    scope:
-      path: '_posts'
-      type: posts
-    values:
-      layout: post
-      author: gwohlgemuth
-      commenting: open
-
-authors:
-  gwohl:
-    name: Gerhard Wohlgemuth
-    email: gwohl.dev@gmail.com
-    url: https://gwohlgemuth.github.io/

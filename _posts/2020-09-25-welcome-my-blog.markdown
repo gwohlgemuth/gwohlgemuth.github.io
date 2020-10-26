@@ -12,7 +12,8 @@ and functional programming.
 ## Here are some of my favorite sites:
 Mathematics / Software: [Haskell], [Purescript], [Unison], [hybrids], [Bartoz Milewski], [Bartoz Milewski: Category Theory for Programmers], [Hott], [Hott/Agda], [KaTeX], [Data-Driven Documents]
 
-
+{% include comment-new.html %}
+<post-comment issue="1"></post-comment>
 
 [Purescript]: https://www.purescript.org/
 [Unison]: https://www.unisonweb.org/

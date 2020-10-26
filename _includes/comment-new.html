@@ -1,33 +1,42 @@
-<hyb1-comp></hyb1-comp>
-</script>
-
 <script type="module">
   import { define , html } from "https://unpkg.com/hybrids@4.3.1/src/index.js"
-  let commentsPromise = fetch ( "https://api.github.com/repos/gwohlgemuth/comments/issues/comments" )
-  const Hyb1Comp = {
-    render: ( comments ) => html`
+  const PostComment = {
+    issue: 0
+  , render: ( { issue } ) => {
+
+    const commentsPromise = fetch ( `https://api.github.com/repos/gwohlgemuth/comments/issues/comments` )
+    const issueUrl = `https://github.com/gwohlgemuth/comments/issues/${issue}`
+
+    return html`
     <style>
       .main {
         display: flex;
-        justify-content: center;
+        //justify-content: center;
+        flex-direction: column
       }
       .btn {
         height: 40px
       }
     </style>
     <div class="main">
-      <a href="https://github.com/gwohlgemuth/comments/issues/1">Post a comment on Github</a>
+      <a style="width: 200px" href=${issueUrl}>Post a comment on Github</a>
       <div id="comments">
         ${html.resolve ( commentsPromise.then( ( response ) => {
             return response.json().then ( data => {
-              return html`<div>${ data[0].body }</div>`
-            })
-          }) )
 
-      }
+              const dataFiltered = data.filter ( item => {
+                const parts = item.issue_url.split("/")
+                return parts[parts.length - 1] == issue
+              })
+              const res = dataFiltered.map ( ( item ) => {
+                return html`<li>${item.body}</li>`
+              } )
+              return html`<ul>${ res }</ul>`
+            } )
+          } ) )}
       </div>
     </div>`
   }
-
-  define ( 'hyb1-comp' , Hyb1Comp )
+}
+  define ( 'post-comment' , PostComment )
 </script>
