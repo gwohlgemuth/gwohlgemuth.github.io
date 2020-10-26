@@ -1,5 +1,33 @@
 <script type="module">
   import { define , html } from "https://unpkg.com/hybrids@4.3.1/src/index.js"
+  const commentHtml = ( avatar_url , login , body ) => {
+    return html`
+    <style>
+      .main {
+        display: flex;
+        flex-direction: column
+      }
+      .comment-header {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+      }
+      .comment {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column
+      }
+    </style>
+
+    <li class="comment">
+      <div class="comment-header">
+        <img style="margin-right: 10px" src="${avatar_url}" width="20" height="20">
+        <div>@${login}</div>
+      </div>
+      <div ><span>${body}</span></div>
+    </li>`
+  }
+
   const PostComment = {
     issue: 0
   , render: ( { issue } ) => {
@@ -8,51 +36,24 @@
     const issueUrl = `https://github.com/gwohlgemuth/comments/issues/${issue}`
 
     return html`
-    <style>
-      .main {
-        display: flex;
-        //justify-content: center;
-        flex-direction: column
-      }
-      .comment-header {
-        //height: 40px;
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: row;
-      }
-      .comment {
-        //height: 80px;
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: column
-      }
-    </style>
     <div class="main">
       <a style="width: 200px" href=${issueUrl}>Post a comment on Github</a>
       <div id="comments">
         ${html.resolve ( commentsPromise.then( ( response ) => {
             return response.json().then ( data => {
-
               const dataFiltered = data.filter ( item => {
                 const parts = item.issue_url.split("/")
                 return parts[parts.length - 1] == issue
               })
               const res = dataFiltered.map ( ( item ) => {
-                return html`<li class="comment">
-                    <div class="comment-header">
-                      <img style="margin-right: 10px" src="${item.user.avatar_url}" width="20" height="20">
-                      <div>@${item.user.login}</div>
-                    </div>
-                    <div ><span>${item.body}
-                    </span></div>
-                  </li>`
+                return commentHtml ( item.user.avatar_url , item.user.login , item.body )
               } )
               return html`<ul>${ res }</ul>`
             } )
           } ) )}
       </div>
     </div>`
+    }
   }
-}
   define ( 'post-comment' , PostComment )
 </script>
