@@ -14,8 +14,17 @@
         //justify-content: center;
         flex-direction: column
       }
-      .btn {
-        height: 40px
+      .comment-header {
+        //height: 40px;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+      }
+      .comment {
+        //height: 80px;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column
       }
     </style>
     <div class="main">
@@ -29,7 +38,14 @@
                 return parts[parts.length - 1] == issue
               })
               const res = dataFiltered.map ( ( item ) => {
-                return html`<li>${item.body}</li>`
+                return html`<li class="comment">
+                    <div class="comment-header">
+                      <img style="margin-right: 10px" src="${item.user.avatar_url}" width="20" height="20">
+                      <div>@${item.user.login}</div>
+                    </div>
+                    <div ><span>${item.body}
+                    </span></div>
+                  </li>`
               } )
               return html`<ul>${ res }</ul>`
             } )
