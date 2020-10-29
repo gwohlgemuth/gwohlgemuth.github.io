@@ -22,8 +22,7 @@
 #title: Univalent Foundations of Mathematics, Functional Programming, Physics
 title: Gerhard Wohlgemuth
 #email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Functional Programming, Mathematics and more
+description: >- # this means to ignore newlines until "baseurl:"  
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
