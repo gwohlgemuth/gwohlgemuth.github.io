@@ -1,4 +1,4 @@
-<script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.25.0/ramda.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.25.0/ramda.min.js">
 
 <script type="module">
   import {property, define, html} from
@@ -12,7 +12,7 @@
 
   const commentsPromise = R.compose(fetch, commentsUrl)
 
-  const issueNumber = R.compose(Number, R.head, R.reverse, R.split ( '/' ) )
+  const issueNumber = R.compose(Number, R.head, R.reverse, R.split('/'))
 
   const filterIssueComment = issue => comment =>
     issueNumber(comment.issue_url) === (issue)
@@ -30,26 +30,26 @@
 
   const commentHtml = avatar_url => login => body => {
     return html`
-    <li>
-      <div style="display: flex;">
-        <img style="margin-right: 10px" src="${avatar_url}" width="20" height="20">
-        <div>@${login}</div>
-      </div>
-      <div ><span>${body}</span></div>
-    </li>`
+<li>
+  <div style="display: flex;">
+    <img style="margin-right: 10px" src="${avatar_url}" width="20" height="20">
+    <div>@${login}</div>
+  </div>
+  <div ><span>${body}</span></div>
+</li>`
   }
 
   const commentSectionHtml = issue => html`
-    <div>
-      <a href=${issueUrl ( issue )}>Post a comment on Github</a>
-      <div>
-        ${html.resolve(commentsPromise().then(commentsJson( issue )))}
-      </div>
-    </div>`
+<div>
+  <a href=${issueUrl ( issue )}>Post a comment on Github</a>
+  <div>
+    ${html.resolve(commentsPromise().then(commentsJson( issue )))}
+  </div>
+</div>`
 
   const PostComment = {
     issue : 0
-  , render : ({ issue }) => commentSectionHtml( issue )
+  , render : ({issue}) => commentSectionHtml( issue )
   }
 
   define('post-comment' , PostComment)
