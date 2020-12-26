@@ -23,7 +23,7 @@
   const commentContentHtml = comment =>
     commentHtml(comment.user.avatar_url)(comment.user.login)(comment.body)
 
-  const filterComments = issue => R.compose(R.filter, filterIssueComment)(issue)
+  const filterComments = R.compose(R.filter, filterIssueComment)
 
   const interpretJson = issue => comments =>
     html`<ul>${R.map(commentContentHtml)(filterComments(issue)(comments))}</ul>`
@@ -43,13 +43,13 @@
 <div>
   <a href=${issueUrl ( issue )}>Post a comment on Github</a>
   <div>
-    ${html.resolve(commentsPromise().then(commentsJson( issue )))}
+    ${html.resolve(commentsPromise().then(commentsJson(issue)))}
   </div>
 </div>`
 
   const PostComment = {
     issue : 0
-  , render : ({issue}) => commentSectionHtml( issue )
+  , render : ({issue}) => commentSectionHtml(issue)
   }
 
   define('post-comment' , PostComment)
